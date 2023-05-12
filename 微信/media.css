@@ -1,0 +1,11 @@
+@media only screen and (max-width: 500px) {
+  .concat{
+    flex-wrap: wrap;
+  }
+  .concat_xiaz{
+    flex-wrap: wrap;
+  }
+  .concat_buttom{
+    flex-wrap: wrap;
+  }
+}

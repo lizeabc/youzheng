@@ -15,13 +15,22 @@ body {
     background-color: rgb(43, 174, 103);
     clip-path: ellipse(70% 80% at 50% 20%);
     display: flex;
-    flex-direction: column;
+    justify-content:center;
+    // flex-direction: column;
     margin: auto;
-
+    #con_box{
+        width:800px;
+        height: 800px;
+        display: flex;
+        flex-wrap: wrap;
+    }
     #box_concat {
+        width: 100%;
         height: 100px;
         margin: auto;
         margin-top: 100px;
+        display: flex;
+        justify-content:center;
 
         img {
             width: 180px;
@@ -45,13 +54,17 @@ body {
     }
 
     .concat {
-        width: 500px;
+        width: 100%;
         height: 188px;
-        position: relative;
-        left: 500px;
-        top: -125px;
+        display: flex;
+        justify-content: center;
+
+        // position: relative;
+        // left: 500px;
+        // top: -125px;
         border-top: 1px solid #ffffff30;
     ul{
+        width: 500px;
         li{
             line-height: 50px;
             font-size: 20px;
@@ -64,13 +77,16 @@ body {
     }
     }
     .concat_xiaz{
-        width: 760px;
+        width: 800px;
         height: 120px;
-        position: relative;
-        left: 396px;
-        top: -80px;
+        // position: relative;
+        // left: 396px;
+        // top: -80px;
         ul{
-            
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
             li{
 
                  line-height: 40px !important;
@@ -79,7 +95,6 @@ body {
                 list-style: none;
                 float: left;
                 background-color:#fcfcfc1f;
-                margin-left: 30px;
                 border-radius: 100px;
                 display: flex;
                 align-items: center;
@@ -92,11 +107,11 @@ body {
         }
     }
     .concat_buttom{
-        width: 715px;
+        width: 800px;
         height: 182px;
-    position: relative;
-        top: -50px;
-        left: 428px;
+    // position: relative;
+    //     top: -50px;
+    //     left: 428px;
         display: flex;
         justify-content: space-between;
         div{
@@ -122,9 +137,8 @@ body {
 .concat_div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 1200px;
-    height: 1500px;
+    justify-content:center;
+    align-content:space-around;
     background-color: #eeeeee;
     margin: auto;
     margin-top: 80px;
@@ -142,6 +156,8 @@ body {
         font-size: 20px;
         transform: scale(1.1);
         transition: all 0.5s;
+        margin-left: 80px;
+        margin-top: 50px;
     }
 
     #concat_d:hover {
@@ -150,13 +166,13 @@ body {
 }
 
 .buttom_div {
+    padding-top: 40px;
     width: 100%;
     height: 100px;
     background-color: white;
+    margin-top: 50px;
 p{
     height: 28px;
-    position: relative;
-    left: 450px;
-    top: 20px;
+    text-align: center;
 }
 }

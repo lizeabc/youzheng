@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../echarts.min.js"></script>
+    <script src="../jquery-3.6.1.js"></script>
+    <link rel="stylesheet" href="../layui-v2.6.8/layui/css/layui.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: rgb(243, 245, 254);
+    }
+
+    .top-box {
+        width: 75%;
+        padding-left: 10px;
+        margin: auto;
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .top-concat {
+        width: 15%;
+        height: 110px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        background-color: white;
+        margin-left: 10px;
+    }
+
+    .top-box h3 {
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+    .top-concat span {
+        margin-left: 10px;
+        font-size: 13px;
+        color: #cccccc;
+        margin-top: -10px;
+    }
+
+    .top-concat p {
+        margin-left: 10px;
+        font-weight: 600;
+    }
+
+    .top-concat h2 {
+        margin-left: 10px;
+
+    }
+
+    .concat {
+        width: 75%;
+        background-color: white;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    .concat-left {
+        width: 49%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(243, 245, 254);
+
+    }
+
+    .concat-right {
+        width: 49%;
+        height: 100%;
+        background-color: rgb(243, 245, 254);
+
+    }
+
+    .tap {
+        height: 40px;
+        padding-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tap h3 {
+        margin-left: 10px;
+    }
+
+    .tap-buttom {
+        width: 350px;
+        height: 35px;
+        padding-top: 5px;
+    }
+
+    .tap-btn2{
+        width: 70px;
+        height: 30px;
+        border-radius: 5px;
+        margin-left: 10px;
+        border: none;
+        background-color: white;
+    }
+    .btna{
+        background-color:  rgb(87, 142, 247);
+    }
+    .btna {
+        -webkit-animation: btna 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: btna 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @-webkit-keyframes btna {
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes btna {
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+        }
+    }
+
+
+    #con {
+        width: 100%;
+        height: 450px;
+        background-color: white;
+        margin-left: 10px;
+        border-radius: 20px;
+    }
+
+    .tap-btn1{
+        width: 70px;
+        height: 30px;
+        border-radius: 5px;
+        margin-left: 10px;
+        background-color: white;
+        border: none;
+    }
+    .tap-bt1{
+        background-color: rgb(87, 142, 247);
+    }
+    .tap-bt1{
+        -webkit-animation: tap-bt1 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: tap-bt1 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes tap-bt1{
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes tap-bt1{
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+        }
+    }
+#right-con{
+    width: 100%;
+        height: 450px;
+        background-color: white;
+        margin-left: 10px;
+
+        
+        border-radius: 20px; 
+}
+.buttom-con{
+    width: 75%;
+    margin: auto;
+    margin-top: 30px;
+    background-color: white;
+}
+.buttom-tap{
+    height: 40px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.buttom-tap h3{
+    width: 100px;
+    margin-left: 10px;
+
+}
+.buttom-concat{
+    height: 440px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.asd{
+    width: 900px;
+    height: 40px;
+    display: flex;
+flex-wrap: wrap;
+}
+#da{
+    width: 150px;
+}
+.asd button{
+    margin-top: 5px;
+}
+.ta{
+        width: 70px;
+        height: 30px;
+        border-radius: 5px;
+        margin-left: 10px;
+        background-color: white;
+        border: none;
+    }
+.da{
+    background-color:rgb(87, 142, 247) ;
+}
+.da{
+        -webkit-animation: da 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: da 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes da{
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes da{
+        0% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        100% {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+        }
+    }
+
+    .left-buttom{
+        width: 49%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .right-buttom{
+        width: 49%;
+        height: 100%;
+    }
+    #adc{
+        width: 170px;
+        height: 130px;
+        padding-left: 10px;
+        background-color: rgb(243, 245, 254);
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        transform: scale(1.1);
+        transition: all 0.5s;
+    }
+    #adc:hover{
+        background-color: white;
+        transform: scale(1.2);
+
+    }
+    #adc h2{
+        font-weight: 600;
+        font-size: 25px;
+        color: rgb(63, 76,120);
+    }
+    #adc span{
+        font-size: 12px;
+        color: #cccccc;
+    }
+    #adc .s{
+        width: 20px;
+       margin-left: 10px;
+       border-radius: 2px;
+       display: inline;
+    }
+    .top-box h3{
+        width: 100%;
+    }
+</style>
+<link rel="stylesheet" href="./mada.css">
+
+<body>
+    <div class="top-box">
+        <h3>代办事项</h3>
+        <div class="top-concat">
+            <p>待发货订单</p>
+            <span>单位(笔)</span>
+            <h2 style="color: rgb(117, 125, 237);">4</h2>
+        </div>
+        <div class="top-concat">
+            <p>待处理售后</p>
+            <span>单位(笔)</span>
+            <h2 style="color: rgb(232, 112, 81);">0</h2>
+        </div>
+        <div class="top-concat">
+            <p>待付款订单</p>
+            <span>单位(笔)</span>
+            <h2 style="color: rgb(122, 202, 130);">113</h2>
+        </div>
+        <div class="top-concat">
+            <p>待补货订单</p>
+            <span>单位(笔)</span>
+            <h2 style="color: rgb(87, 142, 247);">0</h2>
+        </div>
+        <div class="top-concat">
+            <p>待审核会员</p>
+            <span>单位(笔)</span>
+            <h2 style="color: rgb(234, 161, 87);">0</h2>
+        </div>
+        <div class="top-concat">
+            <p>待审核佣金</p>
+            <span>单位(笔)</span>
+            <h2 style="color: rgb(97, 203, 185);">948.19</h2>
+        </div>
+
+    </div>
+    <div class="concat">
+        <div class="concat-left">
+            <div class="tap">
+                <h3>新增会员</h3>
+                <div class="tap-buttom">
+                    <button onclick="btnfun(0)" class="tap-btn2">今天</button>
+                    <button onclick="btnfun(1)" class="tap-btn2">昨天</button>
+                    <button onclick="btnfun(2)" class="tap-btn2">近7日</button>
+                    <button onclick="btnfun(3)" class="tap-btn2">近30天</button>
+                </div>
+            </div>
+            <div id="con"></div>
+        </div>
+        <div class="concat-right">
+            <div class="tap">
+                <h3>新增订单</h3>
+                <div class="tap-buttom">
+                    <button onclick="btn1fun(0)" class="tap-btn1">今天</button>
+                    <button onclick="btn1fun(1)" class="tap-btn1">昨天</button>
+                    <button onclick="btn1fun(2)" class="tap-btn1">近7日</button>
+                    <button onclick="btn1fun(3)" class="tap-btn1">近30天</button>
+                </div>
+            </div>
+            <div id="right-con"></div></div>
+    </div>
+    <div class="buttom-con">
+        <div class="buttom-tap">
+            <h3>运营数据</h3>
+            <div class="asd">
+                <div class="layui-form-item" >
+                    <div class="layui-input-block">
+                      <input type="date" name="title" id="da" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    </div>
+                  </div>
+                  <div class="layui-form-item" >
+                    <div class="layui-input-block">
+                      <input type="date" name="title" id="da" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    </div>
+                  </div>
+                    <button onclick="bfun(0)" class="ta">今天</button>
+                    <button onclick="bfun(1)" class="ta">昨天</button>
+                    <button onclick="bfun(2)" class="ta">近7日</button>
+                    <button onclick="bfun(3)" class="ta">近30天</button>
+            </div>
+        </div>
+        <div class="buttom-concat">
+            <div class="left-buttom">
+                <div id="adc">
+                    <p>成交金额(元)</p>
+                    <h2>796</h2>
+                    <span>较昨日</span>
+                </div>
+                <div id="adc">
+                    <p>退款金额(元)</p>
+                    <h2>0</h2>
+                    <span>较昨日</span>
+                </div>
+                <div id="adc">
+                    <p>支付订单数(元)</p>
+                    <h2>4</h2>
+                    <span>较昨日</span>
+                </div>
+                <div id="adc">
+                    <p>支付人数(元)</p>
+                    <h2>4</h2>
+                    <span>转化率</span>
+                </div>
+                <div id="adc">
+                    <p>客单价(元)</p>
+                    <h2>199</h2>
+                    <span>较昨日</span>
+                </div>
+                <div id="adc">
+                    <p>笔单价(元)</p>
+                    <h2>199</h2>
+                    <span>较昨日</span>
+                </div>
+
+            </div>
+            <div class="right-buttom" id="ui"></div>
+
+        </div>
+    </div>
+    <script>
+        $(function () {
+            fun([123, 1, 2, 34, 4, 65, 2, 7],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            zhu([30,20,25,31,34,35,29,48,42,19],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            xianfun([30,20,25,31,34,35,29,48,42,19],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+        })
+
+        function btnfun(index) {
+            let tapbtn = $('.tap-btn2')
+            for (let i = 0; i < tapbtn.length; i++) {
+                $(tapbtn).eq(i).removeClass('btna')
+            }
+            $(tapbtn).eq(index).addClass('btna')
+            if(index==0){
+                fun([10,20,13,21,43,13,12,34,45,34],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==1){
+                fun([12,23,11,20,50,25,28,19,43,39],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==2){
+                fun([11,13,23,32,19,23,29,12,14,23],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==3){
+                fun([30,20,25,31,34,35,29,48,42,19],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }
+        }
+
+        function btn1fun(index){
+            let tapbtn = $('.tap-btn1')
+            for (let i = 0; i < tapbtn.length; i++) {
+                $(tapbtn).eq(i).removeClass('tap-bt1')
+            }
+            $(tapbtn).eq(index).addClass('tap-bt1')
+            if(index==0){
+                zhu([10,20,13,21,43,13,12,34,45,34],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==1){
+                zhu([12,23,11,20,50,25,28,19,43,39],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==2){
+                zhu([11,13,23,32,19,23,29,12,14,23],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==3){
+                zhu([30,20,25,31,34,35,29,48,42,19],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }
+        }
+        function bfun(index){
+            let tapbtn = $('.ta')
+            for (let i = 0; i < tapbtn.length; i++) {
+                $(tapbtn).eq(i).removeClass('da')
+            }
+            $(tapbtn).eq(index).addClass('da')
+            if(index==0){
+                xianfun([100,250,123,211,43,183,152,314,245,134],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==1){
+                xianfun([192,213,191,200,350,125,298,199,243,339],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==2){
+                xianfun([411,313,223,532,419,523,629,412,514,723],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }else if(index==3){
+                xianfun([330,520,425,631,334,435,529,348,442,519],[0,0,0,0,0,0,0,0,0,0,0,],['0.00','12.00','2.00','4.00','6.00','8.00','10.00','12.00',])
+            }
+        }
+
+function xianfun(jr, zr, yy){
+    var chartDom = document.getElementById('ui');
+        var myChart = echarts.init(chartDom);
+        var option;
+            const colors = ['#5470C6', '#EE6666'];
+            option = {
+                color: colors,
+                tooltip: {
+                    trigger: 'none',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                legend: {},
+                grid: {
+                    top: 70,
+                    bottom: 50
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        axisLine: {
+                            onZero: false,
+                            lineStyle: {
+                                color: colors[1]
+                            }
+                        },
+                        axisPointer: {
+                            label: {
+                                formatter: function (params) {
+                                    return (
+                                        'pv  ' +
+                                        params.value +
+                                        (params.seriesData.length ? '：' + params.seriesData[0].data : '')
+                                    );
+                                }
+                            }
+                        },
+                        // prettier-ignore
+                        data: yy
+                    },
+                    {
+                        type: 'category',
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        axisLine: {
+                            onZero: false,
+                            lineStyle: {
+                                color: colors[0]
+                            }
+                        },
+                        axisPointer: {
+                            label: {
+                                formatter: function (params) {
+                                    return (
+                                        '成交金额 ' +
+                                        params.value +
+                                        (params.seriesData.length ? ':' + params.seriesData[0].data : '')
+                                    );
+                                }
+                            }
+                        },
+                        // prettier-ignore
+                        data: yy
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: '成交金额',
+                        type: 'line',
+                        xAxisIndex: 1,
+                        smooth: true,
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: jr
+                    },
+                    {
+                        name: 'uv',
+                        type: 'line',
+                        smooth: true,
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: zr
+                    }
+                ]
+            };
+
+            option && myChart.setOption(option);
+
+}
+
+     //柱形图
+function zhu(jr, zr, yy){
+    var chartDom = document.getElementById('right-con');
+        var myChart = echarts.init(chartDom);
+        var option;
+            const colors = ['#5470C6', '#EE6666'];
+            option = {
+                color: colors,
+                tooltip: {
+                    trigger: 'none',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                legend: {},
+                grid: {
+                    top: 70,
+                    bottom: 50
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        axisLine: {
+                            onZero: false,
+                            lineStyle: {
+                                color: colors[1]
+                            }
+                        },
+                        axisPointer: {
+                            label: {
+                                formatter: function (params) {
+                                    return (
+                                        ' ' +
+                                        params.value +
+                                        (params.seriesData.length ? '：' + params.seriesData[0].data : '')
+                                    );
+                                }
+                            }
+                        },
+                        // prettier-ignore
+                        data: yy
+                    },
+                    {
+                        type: 'category',
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        axisLine: {
+                            onZero: false,
+                            lineStyle: {
+                                color: colors[0]
+                            }
+                        },
+                        axisPointer: {
+                            label: {
+                                formatter: function (params) {
+                                    return (
+                                        '新增订单 ' +
+                                        params.value +
+                                        (params.seriesData.length ? ':' + params.seriesData[0].data : '')
+                                    );
+                                }
+                            }
+                        },
+                        // prettier-ignore
+                        data: yy
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: '新增会员',
+                        type: 'bar',
+                        xAxisIndex: 1,
+                        smooth: true,
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: jr
+                    },
+                    {
+                        name: 'uv',
+                        type: 'bar',
+                        smooth: true,
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: zr
+                    }
+                ]
+            };
+
+            option && myChart.setOption(option);
+}
+
+
+
+        function fun(jr, zr, yy) {
+            var chartDom = document.getElementById('con');
+        var myChart = echarts.init(chartDom);
+        var option;
+            const colors = ['#5470C6', '#EE6666'];
+            option = {
+                color: colors,
+                tooltip: {
+                    trigger: 'none',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                legend: {},
+                grid: {
+                    top: 70,
+                    bottom: 50
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        axisLine: {
+                            onZero: false,
+                            lineStyle: {
+                                color: colors[1]
+                            }
+                        },
+                        axisPointer: {
+                            label: {
+                                formatter: function (params) {
+                                    return (
+                                        'pv  ' +
+                                        params.value +
+                                        (params.seriesData.length ? '：' + params.seriesData[0].data : '')
+                                    );
+                                }
+                            }
+                        },
+                        // prettier-ignore
+                        data: yy
+                    },
+                    {
+                        type: 'category',
+                        axisTick: {
+                            alignWithLabel: true
+                        },
+                        axisLine: {
+                            onZero: false,
+                            lineStyle: {
+                                color: colors[0]
+                            }
+                        },
+                        axisPointer: {
+                            label: {
+                                formatter: function (params) {
+                                    return (
+                                        '新增会员 ' +
+                                        params.value +
+                                        (params.seriesData.length ? ':' + params.seriesData[0].data : '')
+                                    );
+                                }
+                            }
+                        },
+                        // prettier-ignore
+                        data: yy
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: '新增会员',
+                        type: 'line',
+                        xAxisIndex: 1,
+                        smooth: true,
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: jr
+                    },
+                    {
+                        name: 'uv',
+                        type: 'line',
+                        smooth: true,
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: zr
+                    }
+                ]
+            };
+
+            option && myChart.setOption(option);
+        }
+    </script>
+</body>
+
+</html>
