@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layout 管理系统大布局 - Layui</title>
+  <link rel="stylesheet" href="./layui-v2.6.8/layui/css/layui.css">
+  <script src="./layui-v2.6.8/layui/layui.js"></script>
+  <link rel="stylesheet" href="./index.css">
+  <script src="./jquery-3.6.1.js"></script>
+  <script src="./echarts.min.js"></script>
+</head>
+
+<body>
+
+  <div class="layui-layout layui-layout-admin">
+
+    <div class="layui-header">
+      <div class="top-hed">
+
+      </div>
+      <div class="layui-logo layui-hide-xs layui-bg-black">后台管理</div>
+      <!-- 头部区域（可配合layui 已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <!-- 移动端显示 -->
+        <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-header-event="menuLeft">
+          <i class="layui-icon layui-icon-spread-left"></i>
+        </li>
+
+        <li class="layui-nav-item layui-hide-xs" onclick="tabfun(0)"><a href="#">首页</a></li>
+        <li class="layui-nav-item layui-hide-xs" onclick="tabfun(1)"><a href="#">系统管理</a></li>
+        <li class="layui-nav-item layui-hide-xs" onclick="tabfun(2)"><a href="#">服务监控</a></li>
+
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item layui-hide layui-show-md-inline-block">
+          <a href="javascript:;">
+            <img
+              src="https://www4.bing.com//th?id=OHR.WesternBoxTurtle_ZH-CN6203163704_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp&w=360&h=202"
+              class="layui-nav-img">
+            lz
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="#" onclick="tuifun()">退出登录</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
+          <a href="javascript:;">
+            <i class="layui-icon layui-icon-more-vertical"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="layui-side layui-bg-black">
+      <div class="aaaa"></div>
+      <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+          <li class="layui-nav-item layui-nav-itemed" onclick="tabfun(0)">
+            <a class="" href="javascript:;">首页</a>
+          </li>
+          <li class="layui-nav-item" onclick="tabfun(1)"><a href="javascript:;">系统管理</a></li>
+          <li class="layui-nav-item" onclick="tabfun(2)"><a href="#">服务监控</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="layui-body">
+      <div id="dabox1">
+        <div id="conca">
+          <h2>新增</h2>
+          <div id="ca1">
+            <div class="layui-form-item">
+              <label class="layui-form-label">账号</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" id="zhanh" required lay-verify="required" placeholder="请输入标题"
+                  autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">用户名</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" id="yh" required lay-verify="required" placeholder="请输入标题"
+                  autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">电话</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" id="dh" required lay-verify="required" placeholder="请输入标题"
+                  autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">邮箱</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" id="you" required lay-verify="required" placeholder="请输入标题"
+                  autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <span id="x">性别</span>
+            <select name="" id="sex">
+              <option value="男">男</option>
+              <option value="女">女</option>
+            </select><br>
+            <span id="x1">状态</span>
+            <select name="" id="sele">
+              <option value="是">是</option>
+              <option value="否">否</option>
+            </select>
+            <button class="layui-btn layui-btn-primary" id="qux">取消</button>
+            <button class="layui-btn layui-btn-normal" id="addbtn">确定</button>
+          </div>
+        </div>
+      </div>
+      <!-- 内容主体区域 -->
+      <div class="concatbox">
+        <div id="tap-log">
+          <div class="conc" onmouseover="huaguofun()" id="hua">
+            <div class='co'>
+              <svg style="margin-left: 20px;margin-top: 17px;" t="1684933374433" class="icon" viewBox="0 0 1024 1024"
+                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2589" width="48" height="48">
+                <path
+                  d="M642.8 531.8c64.3-42.6 106.9-115.4 106.9-198.1C749.7 202.6 643.1 96 512 96S274.3 202.6 274.3 333.7c0 82.7 42.6 155.6 106.9 198.1C215.8 582.9 96 727.7 96 898.3c0 16.4 13.3 29.7 29.7 29.7s29.7-13.3 29.7-29.7c0-180.2 159.9-326.9 356.6-326.9 196.6 0 356.6 146.6 356.6 326.9 0 16.4 13.3 29.7 29.7 29.7s29.7-13.3 29.7-29.7c0-170.6-119.8-315.4-285.2-366.5zM333.7 333.7c0-98.3 80-178.3 178.3-178.3s178.3 80 178.3 178.3S610.3 512 512 512s-178.3-80-178.3-178.3z"
+                  fill="#47444F" p-id="2590"></path>
+              </svg>
+            </div>
+            <div class="right">
+              <h3>用户登录量</h3>
+              <p>8</p>
+            </div>
+          </div>
+
+          <div class="conc" onmouseover="huafun()" id="coasa">
+            <div class='coas'>
+              <svg style="margin-left: 22px;margin-top: 24px;" t="1684973609387" class="icon" viewBox="0 0 1024 1024"
+                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3556" width="40" height="40">
+                <path
+                  d="M872.18 94.08L95.95 545.34c-27.56 16.01-36.93 51.33-20.92 78.89a57.713 57.713 0 0 0 30.91 25.51l294.68 102.61v168.81c-0.81 20.38 15.06 37.56 35.45 38.37 20.38 0.81 37.56-15.06 38.37-35.45 0.04-0.97 0.04-1.95 0-2.92V778.15l313.38 109.54c30.09 10.53 63.01-5.33 73.54-35.41a57.7 57.7 0 0 0 2.7-11.22l94.3-689.26c4.31-31.58-17.8-60.68-49.38-64.99a57.746 57.746 0 0 0-36.8 7.27z m-93.37 139.84L424.62 682.17 164.45 591.8l614.36-357.88zM498.38 708.03l374.56-474.11-79.35 575.63-295.21-101.52z"
+                  p-id="3557"></path>
+              </svg>
+            </div>
+            <div class="right">
+              <h3>接口请求量</h3>
+              <p>43</p>
+            </div>
+          </div>
+          <div class="conca" onmouseover="huafun1()" id="coasa1">
+            <div class='co2'>
+              <svg style="margin-left: 22px;margin-top: 24px;" t="1684974595581" class="icon" viewBox="0 0 1024 1024"
+                version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6074" width="40" height="40">
+                <path
+                  d="M601.024 99.584a32 32 0 0 0-8.064 63.488 380.384 380.384 0 0 1 175.68 69.952c-115.744 26.336-150.944 106.048-158.336 175.008-10.72 99.68 60.224 151.968 107.168 186.56 16.48 12.16 41.376 30.528 42.528 39.104 0.16 1.248-0.992 5.408-6.56 12.416-61.056 76.96-83.808 140.832-67.552 189.952 4.96 14.912 15.296 32.896 36.288 47.84A381.856 381.856 0 0 1 544 928c-3.008 0-5.952-0.352-8.96-0.416 40.096-67.392 25.728-118.304 3.424-151.104-54.08-79.488-134.912-104.128-211.04-64.192-5.28 2.848-9.6 1.696-34.4-21.632-24.448-23.04-63.232-58.944-120.032-48.32-5.024-19.2-8.992-38.88-11.04-59.2a32.128 32.128 0 0 0-35.072-28.64c-17.568 1.792-30.4 17.472-28.64 35.072A446.496 446.496 0 0 0 544 992c247.04 0 448-200.96 448-448 0-225.024-168.064-416.064-390.976-444.416zM195.072 704.32c18.368 0.704 33.12 13.216 54.08 32.928 24 22.624 60.352 56.672 108 31.712 63.328-33.28 107.616 12.992 128.384 43.488 8.128 11.936 28.896 42.592-22.432 106.752a381.856 381.856 0 0 1-268.032-214.88z m589.344 138.656c-20.992-6.016-33.824-15.072-37.824-27.072-8.544-25.76 12.736-74.368 56.928-129.984 15.872-20 22.56-40.416 19.872-60.672-4.736-35.52-35.456-58.176-68-82.144-43.392-32-88.288-65.056-81.504-128.192 5.536-51.264 28.288-118.336 156.704-126.112A383.232 383.232 0 0 1 928 544c0 120.768-56.16 228.544-143.584 298.976z"
+                  p-id="6075"></path>
+                <path
+                  d="M266.464 599.68a32 32 0 0 0 43.072 0C456.544 466.016 528 358.816 528 272 528 139.648 420.352 32 288 32S48 139.648 48 272c0 86.816 71.456 194.016 218.464 327.68zM288 96c97.056 0 176 78.944 176 176 0 43.872-31.232 124.128-176 260.416C143.232 396.128 112 315.872 112 272 112 174.944 190.944 96 288 96z"
+                  p-id="6076"></path>
+                <path d="M288 272m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z" p-id="6077"></path>
+              </svg>
+            </div>
+            <div class="right">
+              <h3>ip登录量</h3>
+              <p>3</p>
+            </div>
+          </div>
+        </div>
+        <div id="mai">
+
+        </div>
+      </div>
+      <div class="concatbox" style="    background-color: white;">
+        <div id="mohu">
+          <span>电话</span> <input type="text" id="dh11">
+          <span>账号</span><input type="text" id="names">
+          <span>用户名</span><input type="text" id="uha">
+          <span>邮箱</span><input type="text" id="youx">
+        </div>
+        <div id="btnbox">
+          <button id="sou" class="layui-btn layui-btn-normal"><svg t="1684979631088" class="icon"
+              viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2394" width="20"
+              height="20">
+              <path
+                d="M955.069071 864.311021 740.015134 649.258107c-3.752464-3.751441-8.841366-5.860475-14.149255-5.860475-5.306866 0-10.395768 2.108011-14.149255 5.860475l-16.692171 16.692171-38.34226-38.34226c53.03796-59.810201 85.298711-138.442072 85.298711-224.478588 0-186.774871-151.952784-338.727655-338.727655-338.727655S64.527642 216.35456 64.527642 403.12943c0 186.775894 151.952784 338.728678 338.727655 338.728678 86.36909 0 165.276231-32.510438 225.170343-85.913718l38.303374 38.303374-17.34504 17.34504c-7.812943 7.813966-7.812943 20.48352 0 28.297486l215.051891 215.052914c3.753487 3.751441 8.841366 5.860475 14.149255 5.860475 5.306866 0 10.395768-2.108011 14.149255-5.860475l62.334697-62.334697C962.883037 884.794541 962.883037 872.124987 955.069071 864.311021zM104.546078 403.12943c0-164.709319 133.9999-298.709219 298.709219-298.709219s298.709219 133.9999 298.709219 298.709219S567.964616 701.839673 403.255297 701.839673 104.546078 567.838749 104.546078 403.12943zM878.585119 912.496463 691.829691 725.741036l34.036187-34.036187 186.755428 186.755428L878.585119 912.496463z"
+                fill="#272636" p-id="2395"></path>
+            </svg>搜索</button>
+          <button id="jiabtn" class="layui-btn layui-btn-normal"><svg t="1684979693847" class="icon"
+              viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3526" width="20"
+              height="20">
+              <path
+                d="M935.2 537.1H90.8c-14 0-25.3-11.3-25.3-25.3s11.3-25.3 25.3-25.3h844.5c14 0 25.3 11.3 25.3 25.3s-11.4 25.3-25.4 25.3z"
+                fill="#4F4F4F" p-id="3527"></path>
+              <path
+                d="M513 959.4c-14 0-25.3-11.3-25.3-25.3V89.6c0-14 11.3-25.3 25.3-25.3s25.3 11.3 25.3 25.3V934c0 14-11.3 25.4-25.3 25.4z"
+                fill="#4F4F4F" p-id="3528"></path>
+            </svg>新增</button>
+          <button class="layui-btn layui-btn-warm"><svg t="1684979711746" class="icon" viewBox="0 0 1024 1024"
+              version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4562" width="20" height="20">
+              <path
+                d="M469.333333 170.666667m42.666667 0l0 0q42.666667 0 42.666667 42.666666l0 426.666667q0 42.666667-42.666667 42.666667l0 0q-42.666667 0-42.666667-42.666667l0-426.666667q0-42.666667 42.666667-42.666666Z"
+                fill="#666666" p-id="4563"></path>
+              <path
+                d="M810.666667 341.333333h-85.333334v85.333334h85.333334v341.333333H213.333333v-341.333333h85.333334V341.333333H213.333333a85.333333 85.333333 0 0 0-85.333333 85.333334v341.333333a85.333333 85.333333 0 0 0 85.333333 85.333333h597.333334a85.333333 85.333333 0 0 0 85.333333-85.333333v-341.333333a85.333333 85.333333 0 0 0-85.333333-85.333334zM488.106667 109.226667L356.693333 240.64A34.133333 34.133333 0 0 0 381.013333 298.666667h261.973334a34.133333 34.133333 0 0 0 24.32-58.026667l-131.413334-131.413333a33.706667 33.706667 0 0 0-47.786666 0z"
+                fill="#666666" p-id="4564"></path>
+            </svg>导出</button>
+          <button onclick="congcun()" class="layui-btn"><svg t="1684979737641" class="icon" viewBox="0 0 1024 1024"
+              version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5577" width="20" height="20">
+              <path
+                d="M197.7088 478.72l39.68-39.168a19.2 19.2 0 1 1 26.9824 27.2896l-73.344 72.448a19.2 19.2 0 0 1-26.9824 0l-75.136-74.24A19.2 19.2 0 1 1 115.8912 437.76l43.0592 42.5472C175.616 300.6464 326.7328 160 510.72 160c195.1232 0 353.28 158.1568 353.28 353.28 0 195.1232-158.1568 353.28-353.28 353.28a352.0512 352.0512 0 0 1-242.0224-95.9232 19.2 19.2 0 1 1 26.2912-27.9808 313.6768 313.6768 0 0 0 215.7312 85.504c173.9008 0 314.88-140.9792 314.88-314.88 0-173.9008-140.9792-314.88-314.88-314.88-162.2272 0-295.808 122.6752-313.0112 280.32z"
+                fill="#3F3739" p-id="5578"></path>
+            </svg>重置</button>
+        </div>
+        <div class="tab">
+          <table class="layui-table">
+            <colgroup>
+              <col width="150">
+              <col width="200">
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th></th>
+                <th>序号 </th>
+                <th>账号</th>
+                <th>用户名</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>性别</th>
+                <th>修改时间</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody class="
+            tbo">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="concatbox">
+        <div id="fuwu">
+          <p class="fuq"><span>服务器信息</span></p>
+          <div id="btttom-fw">
+            <div class="nev">
+              <p>系统名称</p>
+              <div id="cs">
+                GNU/Linux CentOS Linux 7.5.1804 (Core) build 3.10.0-1127.19.1.el7.x86_64
+              </div>
+              <div id="right">
+                <p>
+                  系统构架<span>amd64</span>
+                </p>
+
+              </div>
+            </div>
+            <div id="concaw">
+              <p class="p1">java版本<span>1.8.0-171</span></p>
+              <p class="p2">jvm名称<span>Java HotSpot(TM) 64-Bit Server VM</span></p>
+            </div>
+            <div id="concawa">
+              <p class="p3">ip<span>172.17.16.10</span></p>
+              <p class="p4">运行时间<span id="spans">
+                  <span>527</span>天 <span id="spans22"></span>小时 <span id="soan2"></span>分 <span
+                    id="spans1">39</span>秒</span></p>
+            </div>
+          </div>
+        </div>
+        <div id="roubox">
+          <div class="row">
+            <p><span>内存使用率</span></p>
+            <div class="row-con">
+            </div>
+          </div>
+          <div class="rou-right">
+            <p><span>内存使用率趋势</span></p>
+            <div class="rou-butt">
+            </div>
+          </div>
+        </div>
+        <div id="conazt-nev">
+          <div class="lefta">
+            <p><span>CPU使用率趋势</span></p>
+            <div class="ecas"></div>
+          </div>
+          <div class="rightaa">
+            <p><span>CPU使用率趋势</span></p>
+            <div class="ecas2"></div>
+          </div>
+        </div>
+        <div id="conazt-nev">
+          <div class="lefta">
+            <p><span>磁盘总使用率</span></p>
+            <div class="ecasa"></div>
+          </div>
+          <div class="rightaa">
+            <p><span>磁盘总使用率</span></p>
+            <div class="ecas2v">
+              <table class="layui-table" lay-skin="nob">
+                <colgroup>
+                  <col width="150">
+                  <col width="200">
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>文件系统名称</th>
+                    <th>挂载点或盘符</th>
+                    <th>文件系统类型</th>
+                    <th>磁盘分区总量</th>
+                    <th>磁盘分区可用</th>
+                    <th>磁盘分区已用</th>
+                    <th>分区使用比例</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>ext4</td>
+                    <td>49.1GB</td>
+                    <td>36.7GiB</td>
+                    <td>12.4GiB</td>
+                    <td>25.24%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-footer">
+      <!-- 底部固定区域 -->
+      底部固定区域
+    </div>
+  </div>
+  <script>
+    //JS 
+    layui.use(['element', 'layer', 'util'], function () {
+      var element = layui.element
+        , layer = layui.layer
+        , util = layui.util
+        , $ = layui.$;
+
+      //头部事件
+      util.event('lay-header-event', {
+        //左侧菜单事件
+        menuLeft: function (othis) {
+          layer.msg('展开左侧菜单的操作', { icon: 0 });
+        }
+        , menuRight: function () {
+          layer.open({
+            type: 1
+            , content: '<div style="padding: 15px;">处理右侧面板的操作</div>'
+            , area: ['260px', '100%']
+            , offset: 'rt' //右上角
+            , anim: 5
+            , shadeClose: true
+          });
+        }
+      });
+    });
+    layui.use('form', function () {
+      var form = layui.form;
+      //监听提交
+      form.on('submit(formDemo)', function (data) {
+        layer.msg(JSON.stringify(data.field));
+        return false;
+      });
+    });
+    //页面加载事件
+    $(function () {
+      let arr = $('.concatbox')
+      for (let i = 0; i < arr.length; i++) {
+        $(arr).eq(0).css('display', 'block')
+        $(arr).eq(0).css('height', '200%')
+      }
+      let miao = 0
+      let fen = 3
+      let shiu = 17
+      setInterval(function () {
+        miao++
+        if (miao == 60) {
+          fen++
+          miao=0
+          if (fen == 60) {
+            shiu++
+            fen=0
+          }
+        }
+        $('#spans1').html(miao)
+        $('#soan2').html(fen)
+        $('#spans22').html(shiu)
+      }, 1000)
+
+      xiatufun()
+      echfun()
+      userfun()
+    })
+    //退出
+    function tuifun() {
+      if (confirm('你确定退出吗？')) {
+        window.location.replace('http://127.0.0.1:5500/%E7%99%BB%E5%BD%95/%E7%99%BB%E5%BD%95.html')
+        localStorage.clear()
+      }
+    }
+    //重置
+    // function congcun(){
+    // }
+    //左边tab
+    function tabfun(index) {
+      let arr = $('.concatbox')
+      for (let i = 0; i < arr.length; i++) {
+        $(arr).eq(i).css('display', 'none')
+      }
+      $(arr).eq(index).css('display', 'block')
+    }
+    // 鼠标离开
+    $('#hua').mouseout(function () {
+      $('.co').removeClass('coa')
+      $('.co').css('background-color', 'white')
+    })
+    // 鼠标滑过
+    function huaguofun() {
+      $('.co').addClass('coa')
+      $('.co').css('background-color', 'rgb(64,201,198)')
+    }
+    function huafun() {
+      console.log(11);
+      $('.coas').addClass('coak')
+    }
+    $('#coasa').mouseout(function () {
+      $('.coas').removeClass('coak')
+    })
+    function huafun1() {
+      $('.co2').addClass('coak2')
+    }
+    $('#coasa1').mouseout(function () {
+      $('.co2').removeClass('coak2')
+    })
+    //取消
+    $('#qux').click(function () {
+      $('#dabox1').fadeOut()
+      $('.aaaa').fadeOut()
+      $('.top-hed').fadeOut()
+      $('#zhanh').val(''),
+        $('#yh').val(''),
+        $('#dh').val(''),
+        $('#you').val(''),
+        $('#sex').val(''),
+        $('#sele').val('')
+    })
+    //新增
+    $('#jiabtn').click(function () {
+      $('#conca h2').html('新增')
+      $('#dabox1').fadeIn()
+      $('.aaaa').fadeIn()
+      $('.top-hed').fadeIn()
+    })
+    let Arrdata = [
+      {
+        name: 'user2',
+        yh: '用户3',
+        dianhua: '153245647',
+        youx: '154654$@qq.com',
+        sex: '男',
+        xiug: '2016-5-17',
+        kaig: '否'
+      },
+      {
+        name: 'user4',
+        yh: '用户4',
+        dianhua: '153245647asd',
+        youx: '154654$@qq.com11',
+        sex: '女',
+        xiug: '2014-5-17',
+        kaig: '是'
+      },
+      {
+        name: 'user5',
+        yh: '用户5',
+        dianhua: '253245647共和国和',
+        youx: '154654$@qq.com阿松大',
+        sex: '男',
+        xiug: '2018-5-17',
+        kaig: '否'
+      },
+    ]
+    //搜索
+    $('#sou').click(function () {
+      let res = $(Arrdata).filter((index, item) => {
+        return item.dianhua.includes(dh11.value) && item.name.includes(names.value) && item.yh.includes(uha.value) && item.youx.includes(youx.value)
+      })
+      userfun(res)
+    })
+    //渲染
+    function userfun(res = Arrdata) {
+      let html = ''
+      $(res).each((index, item) => {
+        html += `
+        <tr>
+              <td>↓</td>
+              <td>${index+1}</td>
+                <td>${item.name}</td>
+                <td>${item.yh}</td>
+                <td>${item.dianhua}</td>
+                <td>${item.youx}</td>
+                <td>${item.sex}</td>
+                <td>${item.xiug}</td>
+                <td>  
+                  <button class="layui-btn zhuan"  value='${item.kaig}' onclick='zhuantfun(${index})'>${item.kaig}</button>
+                </td>
+                <td><button type="button" class="layui-btn" onclick='gaifun(${index})'>编辑</button><button type="button" class="layui-btn" onclick='shanfun(${index})'>删除</button></td>
+              </tr>
+        `
+      })
+      $('.tbo').html(html)
+    }
+    //添加 确认修改
+    let i = 0
+    $('#addbtn').click(function () {
+      if ($('#conca h2').html() == '新增') {
+        Arrdata.push({
+          name: $('#zhanh').val(),
+          yh: $('#yh').val(),
+          dianhua: $('#dh').val(),
+          youx: $('#you').val(),
+          sex: $('#sex').val(),
+          xiug: sjfun(),
+          kaig: $('#sele').val()
+        })
+      } else {
+        Arrdata[i] = ({
+          name: $('#zhanh').val(),
+          yh: $('#yh').val(),
+          dianhua: $('#dh').val(),
+          youx: $('#you').val(),
+          sex: $('#sex').val(),
+          xiug: sjfun(),
+          kaig: $('#sele').val()
+        })
+      }
+      userfun()
+      $('#dabox1').fadeOut()
+      $('.aaaa').fadeOut()
+      $('.top-hed').fadeOut()
+    })
+    //封装当前时间
+    function sjfun() {
+      let dateObj = new Date()
+      let arr = dateObj.getFullYear()
+      let arr1 = dateObj.getMonth() + 1
+      let arr2 = dateObj.getDate() //日期是几号);
+      return arr + '-' + arr1 + '-' + arr2
+    }
+    //修改回迁
+    function gaifun(index) {
+      i = index
+      $('#zhanh').val(Arrdata[index].name),
+        $('#yh').val(Arrdata[index].yh),
+        $('#dh').val(Arrdata[index].dianhua),
+        $('#you').val(Arrdata[index].youx),
+        $('#sex').val(Arrdata[index].sex),
+        $('#sele').val(Arrdata[index].kaig)
+      $('#conca h2').html('修改')
+      $('#dabox1').fadeIn()
+      $('.aaaa').fadeIn()
+      $('.top-hed').fadeIn()
+    }
+    //删除
+    function shanfun(index) {
+      if (confirm('你确定删除吗？')) {
+        Arrdata.splice(index, 1)
+        userfun()
+      }
+    }
+    //tab状态
+    function zhuantfun(index) {
+      if (confirm('确定修改吗？')) {
+        if ($('.zhuan').eq(index).html() == '是') {
+          $('.zhuan').eq(index).html('否')
+        } else {
+          $('.zhuan').eq(index).html('是')
+        }
+      }
+    }
+    //使用率趋势图
+    let qush = []
+    let qushitu = setInterval(function () {
+      for (let i = 0; i < 1; i++) {
+        num1 = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+        qush.push(num1)
+        xiatufun(qush)
+        neiqusfun(qush)
+      }
+      if (qush.length == 20) {
+        clearInterval(qushitu)
+      }
+      console.log(qush);
+    }, 2000)
+    function xiatufun(qush) {
+      var chartDom1 = document.querySelector('.rou-butt');
+      var myChart = echarts.init(chartDom1);
+      var option;
+      option = {
+        xAxis: {
+          type: 'category',
+          data: ['13.00', '14.00', '15.00', '16.00', '18.00', '20.00', '22.00', '24.00']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            data: qush,
+            type: 'line'
+          }
+        ]
+      };
+
+      option && myChart.setOption(option);
+
+    }
+    //cpu使用率eharts
+    var aa = 5
+    let sylt = setInterval(function () {
+      aa++
+      ybpfun(aa)
+      neicfun(aa)
+      xingqfun(aa)
+      if (aa == 100) {
+        clearInterval(sylt)
+      }
+    }, 2000)
+    function ybpfun(aa) {
+      var chartDom = document.querySelector('.row-con');
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      var value = aa; // 0-100之间
+      console.log(value);
+
+      option = {
+        title: {
+          show: true,
+          text: value + '%',
+          x: '49%',
+          y: '55%',
+          z: 10,
+          textAlign: 'center',
+          textStyle: {
+            color: ' rgb(147,169,205) ',
+            fontSize: 26,
+          }
+        },
+        series: [{
+          name: "",
+          type: "gauge",
+          radius: '60%',
+          splitNumber: 10,
+          axisLine: {
+            lineStyle: {
+              color: [
+                [value / 100, 'rgb(147,169,205)'],
+                [1, "#ddd"]
+              ],
+              width: 14
+            }
+          },
+          axisLabel: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+
+          },
+          splitLine: {
+            show: false,
+          },
+          detail: {
+            show: false
+          },
+          pointer: {
+            show: false,
+          },
+        }]
+      }
+      option && myChart.setOption(option);
+
+    }
+    // 内存使用率
+    function neicfun(aa) {
+      var chartDom = document.querySelector('.ecas');
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      var value = aa; // 0-100之间
+      console.log(value);
+
+      option = {
+        title: {
+          show: true,
+          text: value + '%',
+          x: '49%',
+          y: '55%',
+          z: 10,
+          textAlign: 'center',
+          textStyle: {
+            color: ' rgb(147,169,205) ',
+            fontSize: 26,
+          }
+        },
+        series: [{
+          name: "",
+          type: "gauge",
+          radius: '60%',
+          splitNumber: 10,
+          axisLine: {
+            lineStyle: {
+              color: [
+                [value / 100, 'rgb(230,162,60)'],
+                [1, "#ddd"]
+              ],
+              width: 14
+            }
+          },
+          axisLabel: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+
+          },
+          splitLine: {
+            show: false,
+          },
+          detail: {
+            show: false
+          },
+          pointer: {
+            show: false,
+          },
+        }]
+      }
+      option && myChart.setOption(option);
+
+    }
+    // 内存趋势
+    function neiqusfun(qush) {
+      var chartDom = document.querySelector('.ecas2');
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      option = {
+        xAxis: {
+          type: 'category',
+          boundaryGap: false
+        },
+        yAxis: {
+          type: 'value',
+          boundaryGap: [0, '30%']
+        },
+        visualMap: {
+          type: 'piecewise',
+          show: false,
+          dimension: 0,
+          seriesIndex: 0,
+          pieces: [
+            {
+              gt: 1,
+              lt: 3,
+              color: 'rgba(0, 0, 180, 0.4)'
+            },
+            {
+              gt: 5,
+              lt: 7,
+              color: 'rgba(0, 0, 180, 0.4)'
+            }
+          ]
+        },
+        series: [
+          {
+            type: 'line',
+            smooth: 0.6,
+            symbol: 'none',
+            lineStyle: {
+              color: '#5470C6',
+              width: 5
+            },
+            markLine: {
+              symbol: ['none', 'none'],
+              label: { show: false },
+              data: [{ xAxis: 1 }, { xAxis: 3 }, { xAxis: 5 }, { xAxis: 7 }]
+            },
+            areaStyle: {},
+            data: qush
+
+          }
+        ]
+      };
+      option && myChart.setOption(option);
+
+    }
+    function xingqfun(aa) {
+      var chartDom = document.querySelector('.ecasa');
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      var value = aa; // 0-100之间
+      console.log(value);
+
+      option = {
+        title: {
+          show: true,
+          text: value + '%',
+          x: '49%',
+          y: '55%',
+          z: 10,
+          textAlign: 'center',
+          textStyle: {
+            color: ' rgb(147,169,205) ',
+            fontSize: 26,
+          }
+        },
+        series: [{
+          name: "",
+          type: "gauge",
+          radius: '60%',
+          splitNumber: 10,
+          axisLine: {
+            lineStyle: {
+              color: [
+                [value / 100, 'rgb(19,194,194)'],
+                [1, "#ddd"]
+              ],
+              width: 14
+            }
+          },
+          axisLabel: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+
+          },
+          splitLine: {
+            show: false,
+          },
+          detail: {
+            show: false
+          },
+          pointer: {
+            show: false,
+          },
+        }]
+      }
+      option && myChart.setOption(option);
+
+    }
+    //首页echarts
+    function echfun() {
+      var chartDom = document.getElementById('mai');
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      const colors = ['#5470C6', '#EE6666'];
+      option = {
+        color: colors,
+        tooltip: {
+          trigger: 'none',
+          axisPointer: {
+            type: 'cross'
+          }
+        },
+        legend: {},
+        grid: {
+          top: 70,
+          bottom: 50
+        },
+        xAxis: [
+          {
+            type: 'category',
+            axisTick: {
+              alignWithLabel: true
+            },
+            axisLine: {
+              onZero: false,
+              lineStyle: {
+                color: colors[1]
+              }
+            },
+            axisPointer: {
+              label: {
+                formatter: function (params) {
+                  return (
+                    'Precipitation  ' +
+                    params.value +
+                    (params.seriesData.length ? '：' + params.seriesData[0].data : '')
+                  );
+                }
+              }
+            },
+            // prettier-ignore
+            data: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天']
+          },
+          {
+            type: 'category',
+            axisTick: {
+              alignWithLabel: true
+            },
+            axisLine: {
+              onZero: false,
+              lineStyle: {
+                color: colors[0]
+              }
+            },
+            axisPointer: {
+              label: {
+                formatter: function (params) {
+                  return (
+                    'Precipitation  ' +
+                    params.value +
+                    (params.seriesData.length ? '：' + params.seriesData[0].data : '')
+                  );
+                }
+              }
+            },
+            // prettier-ignore
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value'
+          }
+        ],
+        series: [
+          {
+            name: '本周',
+            type: 'line',
+            xAxisIndex: 1,
+            smooth: true,
+            emphasis: {
+              focus: 'series'
+            },
+            data: [
+              2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3
+            ]
+          },
+          {
+            name: '上周',
+            type: 'line',
+            smooth: true,
+            emphasis: {
+              focus: 'series'
+            },
+            data: [
+              3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7
+            ]
+          }
+        ]
+      };
+
+      option && myChart.setOption(option);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./Swiper demo_files/swiper.min.css">
+    <link rel="stylesheet" href="../layui-v2.6.8/layui/css/layui.css">
+    <script src="../jquery-3.6.1.js"></script>
+    <!-- Demo styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #box {
+            width: 400px;
+            height: 380px;
+            background-color: white;
+            z-index: 3;
+            position: absolute;
+            left: 560px;
+            top: 130px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: center
+        }
+
+        #box h2 {
+            height: 30px;
+            color: rgb(112, 112, 112);
+            margin-bottom: 50px;
+            margin-top: 20px;
+        }
+
+        .layui-input-block {
+            margin-left: 10px;
+        }
+
+        #yzm {
+            width: 240px;
+        }
+
+        #usname {
+            width: 350px;
+        }
+
+        #pwd {
+            width: 350px;
+        }
+
+        #yz {
+            position: absolute;
+            left: 310px;
+            top: 220px;
+        }
+
+        #jz {
+            margin-left: -266px;
+        }
+
+        #dlbtn {
+            width: 350px;
+            margin-top: 25px;
+        }
+
+        #dabox {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            position: absolute;
+            z-index: 4;
+        }
+
+        #dabox img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .kaiju {
+            -webkit-animation: kaiju 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+            animation: kaiju 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        }
+
+        @-webkit-keyframes kaiju {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                -webkit-transform: translateY(-1000px);
+                transform: translateY(-1000px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes kaiju {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                -webkit-transform: translateY(-1000px);
+                transform: translateY(-1000px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dabox">
+        <img src="https://img.zcool.cn/community/01fc9a5d1fff7ea801207640ef9f0d.gif " alt="">
+    </div>
+    <div id="box">
+        <h2>
+            后台管理
+        </h2>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="text" name="title" id="usname" required lay-verify="required" placeholder="账号"
+                    autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="text" name="title" required id="pwd" lay-verify="required" placeholder="密码"
+                    autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="text" name="title" id="yzm" style="margin-left: -107px;" required lay-verify="required"
+                    placeholder="验证码" autocomplete="off" class="layui-input">
+            </div>
+            <span id="yz"></span>
+        </div>
+        <div id="jz">
+            <input type="checkbox" id="jzw" style="margin-right: 5px;"><span>记住我</span>
+        </div>
+        <button type="button" id="dlbtn" class="layui-btn layui-btn-fluid">登录</button>
+
+    </div>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"> <img
+                    src="https://dogefs.s3.ladydaily.com/~/source/wallhaven/full/85/wallhaven-85gxdy.jpg?w=2560&h=1440&fmt=webp"
+                    alt=""></div>
+            <div class="swiper-slide"><img
+                    src="https://dogefs.s3.ladydaily.com/~/source/wallhaven/full/yx/wallhaven-yxqzpd.jpg?w=2560&h=1440&fmt=webp"
+                    alt=""></div>
+            <div class="swiper-slide"><img
+                    src="https://dogefs.s3.ladydaily.com/~/source/wallhaven/full/d6/wallhaven-d6g1gl.jpg?w=2560&h=1440&fmt=webp"
+                    alt=""></div>
+            <div class="swiper-slide"><img
+                    src="https://dogefs.s3.ladydaily.com/~/source/wallhaven/full/jx/wallhaven-jx3gxy.jpg?w=2560&h=1440&fmt=webp"
+                    alt=""></div>
+            <div class="swiper-slide"><img
+                    src="https://dogefs.s3.ladydaily.com/~/source/wallhaven/full/1k/wallhaven-1k9w7w.jpg?w=2560&fmt=webp"
+                    alt=""></div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="./Swiper demo_files/swiper.min.js.下载"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            autoplay: true,
+        });
+        $(function () {
+            if (localStorage.getItem('usname') != null || localStorage.getItem('pw') != null) {
+                if (confirm('是否自动登录？')) {
+                    window.location.replace('http://127.0.0.1:5500/index.html')
+                } else {
+                    dingfun()
+                    localStorage.clear()
+                }
+            } else {
+                    dingfun()
+            }
+            for (let i = 0; i < 4; i++) {
+                    num1 = Math.floor(Math.random() * (9 - 1 + 1) + 1);
+                    yz.innerHTML += num1
+                }
+        })
+        $('#dlbtn').click(function () {
+            console.log(11);
+            if (jzw.checked == true) {
+                if ($('#yzm').val() == $('#yz').html()) {
+                    localStorage.setItem('usname', $('#usname').val())
+                    localStorage.setItem('pw', $('#pwd').val())
+                    alert('登录成功')
+                    window.location.replace('http://127.0.0.1:5500/index.html')
+                } else {
+                    alert('请输入正确的验证码')
+                }
+            } else {
+                if ($('#yzm').val() == $('#yz').html()) {
+                    alert('登录成功')
+                    window.location.replace('http://127.0.0.1:5500/index.html')
+                } else {
+                    alert('请输入正确的验证码')
+                }
+            }
+        })
+        function dingfun() {
+            let arr = setInterval(function () {
+                $('#dabox').addClass('kaiju')
+            }, 2800)
+
+        }
+    </script>
+</body>
+
+</html>
